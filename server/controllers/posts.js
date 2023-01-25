@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js'
 
-export const getPosts = async (req, res) => { 
+export const getUserPosts = async (req, res) => { 
     try {
         const postMessages = await PostMessage.find();//find data needs time, so it should be async. use async... await...
         res.status(200).json(postMessages);
