@@ -7,6 +7,8 @@ import dotenv from 'dotenv'
 
 //import routes
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
+
 //initial app that we can use all the methods
 const app = express();
 
@@ -17,7 +19,8 @@ app.use(bodyParser.json({limit: "30mb", extended: true})); //make sure when we s
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
-app.use('/community', postRoutes);
+app.use('/posts', postRoutes);
+app.use('/users', userRoutes);
 
 
 //connect to database
