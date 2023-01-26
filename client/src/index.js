@@ -1,17 +1,25 @@
-import React from 'react'
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
+//////initialize Redux
+//keep track the store. so we can access global state(store) from anywhere inside the application
+import { Provider } from 'react-redux';
+import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux';
+//allows writing functions with logic inside that can interact with a Redux store's dispatch and getState methods.
+//Thunks are a standard approach for writing async logic in Redux apps, and are commonly used for data fetching
+import thunk from 'redux-thunk';
 
-import App from './App'
+import reducers from './reducers';
 
-//Wrap the App Component with the Router component to enable the router features
+import App from './App';
+import './index.css';
+
+//set up Redux store
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
+
 ReactDOM.render(
-    <StrictMode>
-        <Router>
-            <App />
-        </Router>
-    </StrictMode>,
-    document.getElementById("root")
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root')
 )

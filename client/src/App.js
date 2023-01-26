@@ -1,23 +1,29 @@
-import React from 'react'
-// import the Route & Routes component to define which of the components should render depending on the URL.
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Posts from './pages/Posts'
-import Register from './pages/Register'
+import React, { useState, useEffect } from 'react';
+//import components for more easier styling 
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
-const App = () => {
+import icon from './images/petIcon2023-01-25 225828.png';
+import useStyles from './styles'
+
+
+export default function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/posts" element={<Posts />}/>
-        <Route path="/register" element={<Register />}/>
-      </Routes>
-    </div>
+    
+    <Container maxWidth='lg'>
+        {/* insert styles with classes */}
+        <AppBar className={classes.appBar} position='static' color='inherit'>
+            <img className={classes.image} src={icon} alt="PetsIcon" height='60' />
+            <Typography className={classes.heading} variant='h2' align='center'>Pet Neighbors</Typography>
+            
+        </AppBar>
+        <Grow in>
+            <Container>
+               
+            </Container>
+
+        </Grow>
+    </Container>
   )
 }
-
-export default App;
-
