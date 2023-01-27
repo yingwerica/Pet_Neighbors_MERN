@@ -1,25 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-//////initialize Redux
-//keep track the store. so we can access global state(store) from anywhere inside the application
-import { Provider } from 'react-redux';
-import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux';
-//allows writing functions with logic inside that can interact with a Redux store's dispatch and getState methods.
-//Thunks are a standard approach for writing async logic in Redux apps, and are commonly used for data fetching
-import thunk from 'redux-thunk';
-
-import reducers from './reducers';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StrictMode } from 'react';
 
 import App from './App';
 import './index.css';
-
-//set up Redux store
-const store = createStore(reducers, compose(applyMiddleware(thunk)))
+import { UserAllPosts } from './components/UserAllPosts';
+import { CreatePost } from './components/CreatePost';
+import { UpdatePost } from './components/UpdatePost';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>, 
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />}></Route>
+                <Route path="/myposts" element={<UserAllPosts />}></Route>
+                <Route path="/myposts/create" element={<CreatePost />}></Route>
+                <Route path="/myposts/edit" element={<UpdatePost />}></Route>
+            </Routes>
+        </BrowserRouter>
+  </StrictMode>, 
     document.getElementById('root')
 )
