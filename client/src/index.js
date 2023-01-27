@@ -5,7 +5,7 @@ import { StrictMode } from 'react';
 
 import App from './App';
 import './index.css';
-import { UserAllPosts } from './components/UserAllPosts';
+import { UserAllPosts } from './components/UserPost/UserAllPosts';
 import { CreatePost } from './components/CreatePost';
 import { UpdatePost } from './components/UpdatePost';
 
