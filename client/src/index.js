@@ -16,7 +16,7 @@ ReactDOM.render(
                 <Route path="/" element={<App />}></Route>
                 <Route path="/myposts" element={<UserAllPosts />}></Route>
                 <Route path="/myposts/create" element={<CreatePost />}></Route>
-                <Route path="/myposts/edit" element={<UpdatePost />}></Route>
+                <Route path="/myposts/edit/:id" element={<UpdatePost />}></Route>
             </Routes>
         </BrowserRouter>
   </StrictMode>, 

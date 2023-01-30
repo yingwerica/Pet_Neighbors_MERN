@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, TextField, AppBar, Button, Typography, Paper } from '@material-ui/core';
 import axios from "axios";
 import FileBase from 'react-file-base64';

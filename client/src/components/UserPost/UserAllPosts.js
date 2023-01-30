@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 //import components for more easier styling 
 import { Container, AppBar, Typography, Grid, Button, Box } from '@material-ui/core';
 import { Card, CardActions, CardContent, CardMedia } from '@material-ui/core/';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
 import { useNavigate } from "react-router-dom";
 
 import icon from '../../images/petIcon2023-01-25 225828.png';
 import useStyles from './allPostsstyle'
-import { UpdatePost } from '../UpdatePost';
 import axios from "axios"
+import { UpdatePost } from '../UpdatePost';
 
 export const UserAllPosts = () => {
   const classes = useStyles();
@@ -27,16 +27,13 @@ export const UserAllPosts = () => {
       .catch((err) => console.log(err));
   }, []);
 
+    
 
-  const updatePost = ({post_id}) => {
-    return(
-      <UpdatePost currentId={post_id} />
-    )
+
+  const deletePost = (id) => {
+    console.log(id)
+
   }
-
-  const deletePost = (() => {
-
-  })
 
   return (
     <Container maxWidth='lg'>
@@ -79,7 +76,9 @@ export const UserAllPosts = () => {
                     <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
                   </CardContent>
                   <CardActions className={classes.cardActions}>
-                    <Button size="small" color="primary" onClick={updatePost}><ThumbUpAltIcon fontSize="small" />Edit</Button>
+                                                                                {/* pass id to the update route */}
+                    <Button size="small" color="primary" onClick={() => navigate(`edit/:${post._id}`)}><EditIcon fontSize="small" />Edit</Button>
+                    
                     <Button size="small" color="primary" onClick={() => deletePost(post._id)}><DeleteIcon fontSize="small" /> Delete</Button>
                   </CardActions>
                 </Card>
