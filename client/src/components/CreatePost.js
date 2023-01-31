@@ -33,7 +33,7 @@ export const CreatePost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     ////use axios to make api calls
-    axios.post("/posts", post)
+    axios.post("http://localhost:5000/posts", post)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
 

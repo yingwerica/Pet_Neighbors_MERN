@@ -1,14 +1,20 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-    appBar: {
-        borderRadius: 15,
-        margin: '5% 0',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
+  appBar: {
+    borderRadius: 15,
+    margin: '5% 0',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heading: {
+    color: 'rgba(245, 130, 44, 0.8)',
+  },
+  image: {
+    marginRight: '2%',
+  },
   mainContainer: {
     display: 'flex',
     alignItems: 'center',

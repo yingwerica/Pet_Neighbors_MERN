@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/', getUserPosts)
 router.post('/', createPost)
-router.patch('/:id', updatePost) //patch is for updating
+router.put('/:id', updatePost) //patch is for updating
 router.delete('/:id', deletePost)
 
 

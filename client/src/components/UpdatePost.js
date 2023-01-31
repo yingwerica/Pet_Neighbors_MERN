@@ -8,27 +8,46 @@ import { useNavigate } from "react-router-dom";
 import icon from '../images/petIcon2023-01-25 225828.png';
 import useStyles from './postFormstyle';
 
-export const UpdatePost = () => {
+export const UpdatePost = ({posts, setPosts}) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
   const {id} = useParams();
   // console.log(id)
-  
-  const [updatedPost, setUpdatedPost] = useState({id:id}); 
+  // console.log(posts)
+
+  //get the post data out of posts using id
+  const singlePost = posts.filter((post) => post._id === id)
+  console.log(singlePost)
+
+  const [updatedPost, setUpdatedPost] = useState(singlePost)
   console.log(updatedPost)
 
-
- 
-  
-
   const handleChange = (e) => {
-  
+    const { name, value } = e.target;
+    setUpdatedPost((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
   
+  
   const handleSubmit = (e) => {
+    console.log(updatedPost);
+    e.preventDefault();
+    //update the data in database
+    axios
+    .put(`http://localhost:5000/posts/${id}`, updatedPost)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+
+    navigate(-1);
    
   }
+
+
 
   return (
     <Container>

@@ -1,38 +1,30 @@
 import React, { useState, useEffect } from 'react';
-//import components for more easier styling 
-import { Container, AppBar, Typography, Grow, Grid, Button } from '@material-ui/core';
-import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import axios from 'axios';
 
-import icon from './images/petIcon2023-01-25 225828.png';
-import useStyles from './styles'
+import { UserAllPosts } from './components/UserPost/UserAllPosts';
+import { CreatePost } from './components/CreatePost';
+import { UpdatePost } from './components/UpdatePost';
+import { Home } from './components/Home';
 
 
 export default function App() {
-  const classes = useStyles();
-  const navigate = useNavigate();
+//lifting the state up to the parent
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:5000/posts").then((res) => {
+        console.log(res);
+        setPosts(res.data);
+      }).catch((err) => console.log(err));
+  }, []);
 
-  return (
-    
-    <Container maxWidth='lg'>
-        {/* insert styles with classes */}
-        <AppBar className={classes.appBar} position='static' color='inherit'>
-            <img className={classes.image} src={icon} alt="PetsIcon" height='60' />
-            <Typography className={classes.heading} variant='h2' align='center'>Pet Neighbors</Typography>    
-        </AppBar>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          size="large" 
-          style={{width:"20%"}}
-          onClick={() => navigate("myposts")}>
-          My Posts
-        </Button>
-        <Grow in>
-            <Container>
-               
-            </Container>
-
-        </Grow>
-    </Container>
+  return (  
+        <Routes>        
+                <Route path="/" element={<Home posts={posts} setPosts={setPosts} />}></Route>
+                <Route path="/myposts" element={<UserAllPosts posts={posts} setPosts={setPosts} />}></Route>
+                <Route path="/myposts/create" element={<CreatePost />}></Route>
+                <Route path="/myposts/edit/:id" element={<UpdatePost posts={posts} setPosts={setPosts} />}></Route>
+        </Routes>
+     
   )
 }
