@@ -29,6 +29,13 @@ export const UserAllPosts = ({posts, setPosts}) => {
   const deletePost = (id) => {
     console.log(id)
 
+    axios
+      .delete(`http://localhost:5000/posts/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+      
+      window.location.reload();
+
   }
 
   return (
