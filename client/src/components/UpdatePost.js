@@ -17,8 +17,8 @@ export const UpdatePost = ({posts, setPosts}) => {
   // console.log(posts)
 
   //get the post data out of posts using id
-  const singlePost = posts.filter((post) => post._id === id)
-  console.log(singlePost)
+  const singlePost = posts.find((post) => post._id === id)
+  console.log(singlePost, singlePost.creator)
 
   const [updatedPost, setUpdatedPost] = useState(singlePost)
   console.log(updatedPost)
@@ -33,7 +33,6 @@ export const UpdatePost = ({posts, setPosts}) => {
     });
   };
   
-  
   const handleSubmit = (e) => {
     console.log(updatedPost);
     e.preventDefault();
@@ -43,11 +42,8 @@ export const UpdatePost = ({posts, setPosts}) => {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 
-    navigate(-1);
-   
+    navigate(-1); 
   }
-
-
 
   return (
     <Container>
@@ -60,13 +56,63 @@ export const UpdatePost = ({posts, setPosts}) => {
       <Paper className={classes.paper}>
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant='h6'>Edit the post</Typography>
-        <TextField  name='creator' variant='outlined' label='Creator' fullWidth value={updatedPost.creator} onChange={handleChange}  /> 
-        <TextField  name='title' variant='outlined' label='Title' fullWidth value={updatedPost.title} onChange={handleChange}  />
-        <TextField  name='message' variant='outlined' label='Message' multiline fullWidth value={updatedPost.message} onChange={handleChange}  />
-        <TextField  name='zipcode' variant='outlined' type="number" label='Zipcode' fullWidth value={updatedPost.zipcode} onChange={handleChange}  />  
-        <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({base64}) => setUpdatedPost({...updatedPost, selectedFile: base64})} /></div>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Save Changes</Button>
-        <Button variant="contained" size="small" onClick={() => navigate(-1)} fullWidth>Back to My Posts</Button>
+        <TextField  
+          name='creator' 
+          variant='outlined' 
+          label='Creator' 
+          fullWidth 
+          value={updatedPost.creator} 
+          onChange={handleChange}  
+        /> 
+        <TextField  
+          name='title' 
+          variant='outlined' 
+          label='Title' 
+          fullWidth 
+          value={updatedPost.title} 
+          onChange={handleChange}  
+        />
+        <TextField  
+          name='message' 
+          variant='outlined' 
+          label='Message' 
+          multiline 
+          fullWidth 
+          value={updatedPost.message} 
+          onChange={handleChange}  
+        />
+        <TextField  
+          name='zipcode' 
+          variant='outlined' 
+          type="number" 
+          label='Zipcode' 
+          fullWidth 
+          value={updatedPost.zipcode} 
+          onChange={handleChange}  
+        />  
+        <div className={classes.fileInput}>
+          <FileBase 
+            type="file" 
+            multiple={false} 
+            onDone={({base64}) => setUpdatedPost({...updatedPost, selectedFile: base64})} 
+          />
+        </div>
+        <Button 
+          className={classes.buttonSubmit} 
+          variant="contained" 
+          color="primary" 
+          size="large" 
+          type="submit" 
+          fullWidth>
+            Save Changes
+        </Button>
+        <Button 
+          variant="contained" 
+          size="small" 
+          onClick={() => navigate(-1)} 
+          fullWidth>
+            Back to My Posts
+        </Button>
       </form>
       </Paper>
     </Container>
