@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import icon from '../images/petIcon2023-01-25 225828.png';
 import useStyles from './postFormstyle';
 
-export const CreatePost = () => {
+export const CreatePost = ({ updated, setUpdated }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -34,10 +34,14 @@ export const CreatePost = () => {
     e.preventDefault();
     ////use axios to make api calls
     axios.post("http://localhost:5000/posts", post)
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res);
+          setUpdated(!updated); // trigger fetching data again from database in parent
+          navigate("/myposts");
+        })
         .catch((err) => console.log(err));
 
-    navigate(-1);
+    
   }
 
   return (
@@ -58,7 +62,7 @@ export const CreatePost = () => {
         <TextField  name='zipcode' variant='outlined' type="number" label='Zipcode' fullWidth value={post.zipcode} onChange={handleChange}  />  
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({base64}) => setPost({...post, selectedFile: base64})} /></div>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" size="small" onClick={() => navigate(-1)} fullWidth>Back to My Posts</Button>
+        <Button variant="contained" size="small" onClick={() => navigate("/myposts")} fullWidth>Back to My Posts</Button>
       </form>
       </Paper>
     </Container>

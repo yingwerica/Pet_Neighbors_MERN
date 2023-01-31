@@ -4,38 +4,32 @@ import { Container, AppBar, Typography, Grid, Button, Box, CircularProgress } fr
 import { Card, CardActions, CardContent, CardMedia } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+
 import moment from 'moment';
 import { useNavigate } from "react-router-dom";
+
+//to use useIsFocused hook to re-render the component
+// import { useIsFocused } from '@react-navigation/native';
 
 import icon from '../../images/petIcon2023-01-25 225828.png';
 import useStyles from './allPostsstyle'
 import axios from "axios"
 
 
-export const UserAllPosts = ({posts, setPosts}) => {
+export const UserAllPosts = ({posts, setPosts, updated, setUpdated}) => {
   const classes = useStyles();
   const navigate = useNavigate();
  
-  // const [posts, setPosts] = useState([]);
-  // useEffect(() => {
-  //   axios.get("/posts").then((res) => {
-  //       console.log(res);
-  //       setPosts(res.data);
-  //     }).catch((err) => console.log(err));
-  // }, []);
-
-
-
   const deletePost = (id) => {
     console.log(id)
 
     axios
       .delete(`http://localhost:5000/posts/${id}`)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setUpdated(!updated); // trigger fetching data again from database in parent
+      })
       .catch((err) => console.log(err));
-      
-      window.location.reload();
-
   }
 
   return (
@@ -57,7 +51,7 @@ export const UserAllPosts = ({posts, setPosts}) => {
         <Button variant="contained" color="primary" size="large" style={{width:"20%"}} onClick={() => navigate("create")}>
         Create New Post
         </Button>
-        <Button variant="contained" size="large" style={{width:"20%" }} onClick={() => navigate(-1)}>
+        <Button variant="contained" size="large" style={{width:"20%" }} onClick={() => navigate("/")}>
         Back to Home Page 
         </Button>
       </Box>

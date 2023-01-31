@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import icon from '../images/petIcon2023-01-25 225828.png';
 import useStyles from './postFormstyle';
 
-export const UpdatePost = ({posts, setPosts}) => {
+export const UpdatePost = ({posts, setPosts, updated, setUpdated}) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ export const UpdatePost = ({posts, setPosts}) => {
   // console.log(id)
   // console.log(posts)
 
-  //get the post data out of posts using id
+  //get the post data object out of posts using find method with id
   const singlePost = posts.find((post) => post._id === id)
   console.log(singlePost, singlePost.creator)
 
@@ -39,10 +39,14 @@ export const UpdatePost = ({posts, setPosts}) => {
     //update the data in database
     axios
     .put(`http://localhost:5000/posts/${id}`, updatedPost)
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res);
+      setUpdated(!updated); // trigger fetching data again from database in parent
+      navigate("/myposts");
+      })
     .catch((err) => console.log(err));
 
-    navigate(-1); 
+    
   }
 
   return (
@@ -109,7 +113,7 @@ export const UpdatePost = ({posts, setPosts}) => {
         <Button 
           variant="contained" 
           size="small" 
-          onClick={() => navigate(-1)} 
+          onClick={() => navigate("/myposts")} 
           fullWidth>
             Back to My Posts
         </Button>
