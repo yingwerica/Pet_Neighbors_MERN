@@ -4,6 +4,12 @@
 ---
 This is a community for pets owners. You can post your pet playdate, pet sitting and pet walking needs etc.. And also you can search and view the post in your area(zipcode) and offer help or find friends for your pets!
 
+This is the Home page:
+!(https://github.com/yingwerica/Pet_Neighbors_MERN/blob/main/client/src/images/Pet%20Neighbors%20homepage%202023-02-01%20141313.jpg)
+
+This is the edit form:
+!(https://github.com/yingwerica/Pet_Neighbors_MERN/blob/main/client/src/images/Pet%20Neighbors%20Edit%20form%202023-02-01%20141448.jpg)
+
 
 ## Technologies Used:
 ---
