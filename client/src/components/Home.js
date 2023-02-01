@@ -1,6 +1,6 @@
 import React from 'react'
 //import components for more easier styling 
-import { Container, AppBar, Typography, Grow, Grid, Button } from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Grid, Button, CircularProgress, Box } from '@material-ui/core';
 import { useNavigate } from "react-router-dom";
 
 import icon from '../images/petIcon2023-01-25 225828.png';
@@ -17,14 +17,22 @@ export const Home = () => {
             <img className={classes.image} src={icon} alt="PetsIcon" height='60' />
             <Typography className={classes.heading} variant='h2' align='center'>Pet Neighbors</Typography>    
         </AppBar>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          size="large" 
-          style={{width:"20%"}}
-          onClick={() => navigate("myposts")}>
-          My Posts
+        <Box  sx={{
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        paddingBottom: '5%',
+        '& > *': {
+          m: 1,
+        },
+        }}
+      >
+        <Button variant="contained" color="primary" size="large" style={{width:"20%"}} onClick={() => navigate("/login")}>
+        Login
         </Button>
+        <Button variant="contained" color="primary" size="large" style={{width:"20%" }} onClick={() => navigate("/myposts")}>
+        My Posts
+        </Button>
+      </Box>
         <Grow in>
             <Container>
                
