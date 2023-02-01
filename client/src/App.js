@@ -6,6 +6,7 @@ import { UserAllPosts } from './components/UserPost/UserAllPosts';
 import { CreatePost } from './components/CreatePost';
 import { UpdatePost } from './components/UpdatePost';
 import { Home } from './components/Home';
+import { Login } from './components/Login';
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
   return (  
         <Routes>        
                 <Route path="/" element={<Home posts={posts} setPosts={setPosts} />}></Route>
+                <Route path="/login" element={<Login />}></Route>
                 <Route path="/myposts" element={<UserAllPosts posts={posts} setPosts={setPosts} updated={updated} setUpdated={setUpdated} />}></Route>
                 <Route path="/myposts/create" element={<CreatePost updated={updated} setUpdated={setUpdated} />}></Route>
                 <Route path="/myposts/edit/:id" element={<UpdatePost posts={posts} setPosts={setPosts} updated={updated} setUpdated={setUpdated} />}></Route>
