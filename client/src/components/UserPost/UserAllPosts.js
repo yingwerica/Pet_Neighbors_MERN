@@ -24,7 +24,7 @@ export const UserAllPosts = ({posts, setPosts, updated, setUpdated}) => {
     console.log(id)
 
     axios
-      .delete(`http://localhost:5000/posts/${id}`)
+      .delete(`https://pet-neighbors-backend-test.onrender.com/posts/${id}`)
       .then((res) => {
         console.log(res);
         setUpdated(!updated); // trigger fetching data again from database in parent

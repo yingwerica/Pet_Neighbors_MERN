@@ -16,7 +16,7 @@ export default function App() {
   const [ updated, setUpdated ] = useState(false)
 
   useEffect(() => {
-    axios.get("http://localhost:5000/posts").then((res) => {
+    axios.get("https://pet-neighbors-backend-test.onrender.com/posts").then((res) => {
         console.log(res);
         setPosts(res.data);
       }).catch((err) => console.log(err));

@@ -38,7 +38,7 @@ export const UpdatePost = ({posts, setPosts, updated, setUpdated}) => {
     e.preventDefault();
     //update the data in database
     axios
-    .put(`http://localhost:5000/posts/${id}`, updatedPost)
+    .put(`https://pet-neighbors-backend-test.onrender.com/posts/${id}`, updatedPost)
     .then((res) => {
       console.log(res);
       setUpdated(!updated); // trigger fetching data again from database in parent

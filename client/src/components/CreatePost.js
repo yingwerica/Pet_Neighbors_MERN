@@ -33,7 +33,7 @@ export const CreatePost = ({ updated, setUpdated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     ////use axios to make api calls
-    axios.post("http://localhost:5000/posts", post)
+    axios.post("https://pet-neighbors-backend-test.onrender.com/posts", post)
         .then((res) => {
           console.log(res);
           setUpdated(!updated); // trigger fetching data again from database in parent
