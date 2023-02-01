@@ -15,7 +15,7 @@ Lucidchart, Trello, VSCode
 ## Getting Started: 
 ---
 The project's planning: https://trello.com/b/75pnYFpR/pets-neighbors-app-planning
-You can find the deployed app here:
+You can find the deployed app here: https://pet-neighbors.onrender.com
 
 ---
 
