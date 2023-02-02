@@ -13,8 +13,8 @@ This is the edit form:
 ---
 ## Technologies Used:
 ---
-Material UI, React, Express, Node, MongoDB, Postman, Axios
-Lucidchart, Trello, VSCode
+Material UI, React, Express, Node, MongoDB, Postman, Axios, VSCode, 
+Lucidchart, Trello.
 
 ---
 
