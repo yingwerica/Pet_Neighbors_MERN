@@ -28,12 +28,12 @@ export const Login = () => {
      <form onSubmit={handleSubmit}>
        <div className="input-container">
          <label className="label">Username </label>
-         <input type="text" name="uname" required />
+         <input className="input" type="text" name="uname" required />
          
        </div>
        <div className="input-container">
          <label className="label">Password </label>
-         <input type="password" name="pass" required />
+         <input className="input" type="password" name="pass" required />
          
        </div>
        <div className="button-container">
