@@ -3,7 +3,7 @@ import { Container, AppBar, Typography } from '@material-ui/core';
 import { useNavigate } from "react-router-dom"
 
 import icon from '../images/petIcon2023-01-25 225828.png';
-import useStyles from './postFormstyle';
+import useStyles from '../styles';
 import './loginstyle.css';
 
 export const Login = () => {
