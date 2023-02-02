@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 //import components for more easier styling 
 import { Container, AppBar, Typography, Grid, Button, Box, CircularProgress } from '@material-ui/core';
 import { Card, CardActions, CardContent, CardMedia } from '@material-ui/core/';

@@ -1,0 +1,45 @@
+ 
+  input[type="text"],
+  input[type="password"] {
+    font-size: large;
+    height: 45px;
+    width: 45%;
+    border: 1px solid #437eb5;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    margin-top: 10px;
+    width: 15%;
+    cursor: pointer;
+    font-size: 25px;
+    background: #3c77d0;
+    border: 1px solid #437eb5;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  input[type="submit"]:hover {
+    background: rgb(55, 151, 63);
+    border-color:rgb(55, 151, 63) ;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+    
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 40px;
+    align-items: center;
+  }
+
+  .label {
+    font-size: 30px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color:#234f91;
+  }
